@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+    paths-ignore:
+      - 'CHANGES*'
+      - 'Doc/**'
+      - 'appveyor.yml'
+  pull_request:
+    branches:
+      - '**'
+    paths-ignore:
+      - 'CHANGES*'
+      - 'Doc/**'
+      - 'appveyor.yml'
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: "Linux"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 18
+    - run: npm install
+    - uses: JS-DevTools/npm-publish@v3
+      with:
+        token: ${{ secrets.NPM_AUTH_TOKEN }}
+
+  
+
+
