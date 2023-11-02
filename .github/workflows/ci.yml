@@ -23,14 +23,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    name: "Linux"
+    name: "publish to npm"
     steps:
     - name: Checkout
       uses: actions/checkout@v3
     - uses: actions/setup-node@v1
       with:
         node-version: 18
-    - run: npm install
+    - run: npm ci
     - uses: JS-DevTools/npm-publish@v3
       with:
         token: ${{ secrets.NPM_AUTH_TOKEN }}
