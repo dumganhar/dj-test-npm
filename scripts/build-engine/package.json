@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cocos/cocos-engine.git",
+    "url": "https://github.com/dumganhar/dj-test-npm",
     "directory": "scripts/build-engine"
   },
   "main": "dist/index.js",
